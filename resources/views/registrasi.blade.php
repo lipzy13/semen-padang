@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url(background.png);
+            background-image: url(assets/background.png);
             background-color: black;
             background-position: center;
             background-size: cover;
@@ -69,7 +69,7 @@
 <body>
 <div class="container">
     <div class="logo-container">
-        <img class="logo" src="LOGO PT SEMEN PADANG HITAM.png" alt="Company Logo">
+        <img class="logo" src="assets/LOGO SEMEN PADANG.jpeg" alt="Company Logo">
         <h2>Registrasi</h2>
     </div>
 
@@ -83,11 +83,6 @@
         <div class="mb-3">
             <label for="nip" class="form-label">NIP:</label>
             <input type="text" class="form-control" id="nip" name="nip" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="email" class="form-label">Email:</label>
-            <input type="text" class="form-control" id="email" name="email" required>
         </div>
 
         <div class="mb-3">

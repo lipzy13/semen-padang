@@ -15,26 +15,27 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-})->name('main');
+})->name('main')->middleware('auth');
 
 Route::get('/periksa', function(){
     return view('periksa');
-})->name('periksa');
+})->name('periksa')->middleware('auth');
 
 Route::get('/history', function(){
     return view('history');
-})->name('history');
+})->name('history')->middleware('auth');
 
 Route::get('/pusat-bantuan', function(){
     return view('help');
-})->name('help');
+})->name('help')->middleware('auth');
 
-Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index'])->name('login');
-Route::get('/form-admin', function(){
-   return view('formAdmin');
-});
+Route::get('/basic-maintenance', [\App\Http\Controllers\basicMaintenanceController::class, 'index'])
+    ->name('basicMaintenance')->middleware('auth');
 
-Route::get('/work-order', [\App\Http\Controllers\workOrderController::class, 'index']);
+Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/profil', [\App\Http\Controllers\ProfilController::class, 'index'])->middleware('auth');
+
+Route::get('/work-order', [\App\Http\Controllers\workOrderController::class, 'index'])->middleware('auth');
 Route::post('/work-order', [\App\Http\Controllers\workOrderController::class, 'store']);
 
 Route::post('/login', [\App\Http\Controllers\LoginController::class, 'authenticate']);

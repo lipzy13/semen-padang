@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\aksi;
 use App\Models\Alat;
 use App\Models\Area;
 use App\Models\Route;
@@ -74,6 +75,26 @@ class DatabaseSeeder extends Seeder
         Alat::create([
             'id'=>4,
             'kode_alat'=>'6W1W34A01U41'
+        ]);
+        Aksi::create([
+            'id'=>1,
+            'nama'=>'cleaning'
+        ]);
+        Aksi::create([
+            'id'=>2,
+            'nama' => 'visual'
+        ]);
+        Aksi::create([
+            'id'=>3,
+            'nama' => 'adjusting'
+        ]);
+        Aksi::create([
+            'id'=>4,
+            'nama'=> 'repair'
+        ]);
+        Aksi::create([
+            'id'=>5,
+            'nama'=>'indikasi'
         ]);
     }
 }

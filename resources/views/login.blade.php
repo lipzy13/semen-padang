@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url(background.png);
+            background-image: url(assets/background.png);
             background-color: black;
             background-position: center;
             background-size: cover;
@@ -75,7 +75,7 @@
 <body>
 <div class="container">
     <div class="logo-container">
-        <img class="logo" src="LOGO PT SEMEN PADANG HITAM.png" alt="Company Logo">
+        <img class="logo" src="assets/LOGO SEMEN PADANG.jpeg" alt="Company Logo">
         <h2>LOGIN</h2>
     </div>
 
