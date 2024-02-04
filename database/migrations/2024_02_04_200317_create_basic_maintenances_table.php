@@ -11,7 +11,6 @@ return new class extends Migration {
             $table->id('id');
             $table->foreignId('area_id')->constrained();
             $table->foreignId('route_id')->constrained();
-            $table->string('pic');
             $table->date('tanggal');
             $table->foreignId('alat_id')->constrained();
             $table->string('abnormalitas');

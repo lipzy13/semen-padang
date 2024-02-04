@@ -17,7 +17,7 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand  navbar-expand ">
     <!-- Navbar Brand-->
-    <a class="navbar-brand text-white " href="index.html">
+    <a class="navbar-brand text-white " href="/">
         <img class="logo" src="assets/LOGO PT SEMEN PADANG HITAM.png" alt="Logo" height="63">semen padang
     </a>
     <!-- Sidebar Toggle-->

@@ -4,16 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Area;
 use App\Models\Route;
+use App\Models\User;
 
 class basicMaintenanceController extends Controller
 {
     public function index()
     {
-        $area = Area::all();
-        $route = Route::all();
-        return view('basicMaintenance', [
-            "area"=>$area,
-            "route"=>$route
-        ]);
+
+        return view('basicMaintenance');
     }
 }

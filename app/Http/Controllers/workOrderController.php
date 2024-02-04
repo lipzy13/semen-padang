@@ -14,16 +14,13 @@ class workOrderController extends Controller
 
     public function store(Request $request){
         $this->validate(request(), [
-            'area_id' => 'required',
-            'route_id' => 'required',
-            'pic' => 'required',
             'tanggal' => 'required',
-            'kode_alat' => 'required',
+            'alat_id' => 'required',
             'abnormalitas' => 'required',
             'action' => 'required',
-            'kondisi' => 'required'
+            'konidis' => 'bool'
         ]);
-        $user = workOrder::create(request(['area_id', 'route_id', 'pic', 'tanggal', 'kode_alat', 'abnormalitas', 'action', 'kondisi']));
-        return redirect(route('main'));
+        $user = workOrder::create(request(['tanggal', 'alat_id', 'abnormalitas', 'action', 'kondisi']));
+        return redirect('/work-order');
     }
 }

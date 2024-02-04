@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('aksi_lists', function (Blueprint $table) {
             $table->id();
             $table->integer('basic_maintenance_id');
-            $table->foreignId('aksi_id')->constrained();
+            $table->integer('aksi_id');
         });
     }
 

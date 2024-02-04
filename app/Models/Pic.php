@@ -8,5 +8,6 @@ class Pic extends Model
 {
     protected $fillable = [
         'nama',
+        'basic_maintenances_id'
     ];
 }

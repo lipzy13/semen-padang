@@ -7,11 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class workOrder extends Model
 {
     protected $fillable = [
-        'area_id',
-        'route_id',
-        'pic',
         'tanggal',
-        'kode_alat',
+        'alat_id',
         'abnormalitas',
         'action',
         'kondisi',

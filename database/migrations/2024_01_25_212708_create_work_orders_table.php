@@ -9,11 +9,8 @@ return new class extends Migration {
     {
         Schema::create('work_orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('area_id');
-            $table->integer('route_id');
-            $table->string('pic');
             $table->date('tanggal');
-            $table->integer('kode_alat');
+            $table->foreignId('alat_id')->constrained();
             $table->string('abnormalitas');
             $table->string('action');
             $table->boolean('kondisi');
