@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class workOrder extends Model
 {
@@ -17,4 +18,8 @@ class workOrder extends Model
     protected $casts = [
         'tanggal' => 'date',
     ];
+
+    public function alat () : BelongsTo {
+        return $this->belongsTo(Alat::class);
+    }
 }

@@ -17,30 +17,26 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>AREA</th>
-                    <th>ROUTE</th>
-                    <th>PIC</th>
                     <th>TANGGAL</th>
-                    <th>KODE ALAT</th>
+                    <th>ALAT</th>
                     <th>ABNORMALITAS</th>
                     <th>ACTION</th>
                     <th>KONDISI</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>RM</td>
-                    <td>ROUTE A-1</td>
-                    <td>tess</td>
-                    <td>25/1/2024</td>
-                    <td>123456</td>
-                    <td>tess</td>
-                    <td>tess</td>
-                    <td>ok</td>
-                </tr>
-                <!-- Tambahkan baris sesuai kebutuhan -->
+                @foreach(\App\Models\workOrder::all() as $worko)
+                    <tr>
+                        <td>{{$worko->tanggal->format('d/m/Y')}}</td>
+                        <td>{{$worko->alat->kode_alat}}</td>
+                        <td>{{$worko->abnormalitas}}</td>
+                        <td>{{$worko->action}}</td>
+                        <td>{{$worko->kondisi ? 'ok' : 'not ok'}}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
+            <a href="/work-order/download" class="btn-success btn my-2">Download</a>
         </div>
 
     </div>
@@ -58,11 +54,9 @@
                     <th>PIC</th>
                     <th>TANGGAL</th>
                     <th>KODE ALAT</th>
-                    <th>cleaning</th>
-                    <th>visual</th>
-                    <th>adjusting</th>
-                    <th>repair</th>
-                    <th>indikasi</th>
+                    @foreach(\App\Models\Aksi::all() as $semua_aksi)
+                        <th>{{$semua_aksi->nama}}</th>
+                    @endforeach
                     <th>kondisi</th>
                 </tr>
                 </thead>
@@ -82,11 +76,14 @@
                         </td>
                         <td>{{$data->tanggal->format('d/m/Y')}}</td>
                         <td>{{$data->alat->kode_alat}}</td>
-                        @if(\App\Models\AksiList::where('basic_maintenance_id', $data->id)->orderBy('aksi_id'))
-
-                        @endif
+                        <?php $aksi_list = \App\Models\AksiList::pluck('aksi_id')->all() ?>
                         @foreach(\App\Models\Aksi::all() as $aksi)
-                            <td align="centre" style="font-family: wingdings; font-size:150%;font-weight:bold; font-color:green">&#10004;</TD>
+                            @if(in_array($aksi->id, $aksi_list))
+                                <td align="center" style="font-family: wingdings; font-size:150%;font-weight:bold; font-color:green">&#10004;</td>
+                            @else
+                                <td align="center" style="font-family: wingdings; font-size:150%;font-weight:bold; font-color:green"></td>
+                            @endif
+
                         @endforeach
                         <td>{{$data->kondisi ? 'ok' : 'not ok'}}</td>
                     </tr>
@@ -94,6 +91,7 @@
                 <!-- Tambahkan baris sesuai kebutuhan -->
                 </tbody>
             </table>
+            <a href="/basic-maintenance/download" class="btn-success btn my-2">Download</a>
         </div>
 
     </div>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\workOrderExport;
 use App\Models\workOrder;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class workOrderController extends Controller
 {
@@ -22,5 +24,10 @@ class workOrderController extends Controller
         ]);
         $user = workOrder::create(request(['tanggal', 'alat_id', 'abnormalitas', 'action', 'kondisi']));
         return redirect('/work-order');
+    }
+
+    public function export()
+    {
+        return Excel::download(new workOrderExport, 'work-order.xlsx');
     }
 }

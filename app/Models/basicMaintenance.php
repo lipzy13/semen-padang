@@ -34,8 +34,8 @@ class basicMaintenance extends Model
         return $this->belongsTo(Route::class);
     }
 
-    public function aksiList() : HasOne {
-        return $this->hasOne(AksiList::class);
+    public function aksiList() : HasMany {
+        return $this->hasMany(AksiList::class);
     }
     public function pic() : HasMany {
         return $this->hasMany(Pic::class);

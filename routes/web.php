@@ -32,6 +32,9 @@ Route::get('/pusat-bantuan', function(){
 Route::get('/basic-maintenance', [\App\Http\Controllers\basicMaintenanceController::class, 'index'])
     ->name('basicMaintenance')->middleware('auth');
 
+Route::get('/basic-maintenance/download', [\App\Http\Controllers\basicMaintenanceController::class, 'export']);
+Route::get('/work-order/download', [\App\Http\Controllers\workOrderController::class, 'export']);
+
 Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::get('/profil', [\App\Http\Controllers\ProfilController::class, 'index'])->middleware('auth');
 

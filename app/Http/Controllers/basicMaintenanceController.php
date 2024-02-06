@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Area;
-use App\Models\Route;
-use App\Models\User;
+use App\Exports\BasicMaintenanceExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class basicMaintenanceController extends Controller
 {
@@ -12,5 +11,10 @@ class basicMaintenanceController extends Controller
     {
 
         return view('basicMaintenance');
+    }
+
+    public function export()
+    {
+        return Excel::download(new BasicMaintenanceExport, 'tes.xlsx');
     }
 }
