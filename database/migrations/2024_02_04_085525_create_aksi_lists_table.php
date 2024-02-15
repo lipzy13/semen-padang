@@ -11,6 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->integer('basic_maintenance_id');
             $table->integer('aksi_id');
+            $table->integer('alat_id');
+
         });
     }
 

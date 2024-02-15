@@ -52,37 +52,74 @@
         </div><br>
 
         <div class="form-check">
-            <label for="validationDefault02" class="form-label">Kode Alat</label>
-            <select class="form-select" wire:model="alat">
+            <label for="alat" class="">Kode Alat</label>
+            <select id="alat" class="form-select" wire:model="alat.0">
                 <option disabled selected value="">Alat</option>
-                @foreach(\App\Models\Alat::all() as $al)
-                    <option value="{{$al->id}}">{{$al->kode_alat}}</option>
+                @foreach(\App\Models\Alat::all() as $use)
+                    <option value="{{$use->id}}" >{{$use->kode_alat}}</option>
                 @endforeach
             </select>
-        </div>
-
-        @foreach(\App\Models\Aksi::all() as $aksi)
-            <div class="form-check">
-                <input  type="checkbox" value="{{$aksi->id}}" id="flexCheckDefault{{$aksi->id}}" wire:model="aksi">
-                <label  for="flexCheckDefault{{$aksi->id}}">
-                    {{$aksi->nama}}
-                </label>
+            @foreach(\App\Models\Aksi::all() as $aksi)
+                <div class="form-check">
+                    <input type="checkbox" value="{{$aksi->id}}" id="flexCheckDefault{{$aksi->id}}" wire:model="aksi.0">
+                    <label for="flexCheckDefault{{$aksi->id}}">
+                        {{$aksi->nama}}
+                    </label>
+                </div>
+            @endforeach
+            <div class="form-check form-check-inline">
+                <input  type="radio" name="inlineRadioOptions" id="inlineRadio01" value=1 wire:model="kondisi.0">
+                <label for="inlineRadio01">ok</label>
             </div>
-        @endforeach
+            <div class="form-check form-check-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio02" value=0 wire:model="kondisi.0">
+                <label for="inlineRadio02">not ok</label>
+            </div>
+            <div class="mb-3">
+                <label for="validationTextarea" class="form-label">Abnormalitas</label>
+                <textarea class="form-control" id="validationTextarea" placeholder="Masukan teks" wire:model="abnormalitas.0" ></textarea>
+            </div>
 
+            @foreach($alat as $key => $tangg)
+                @if($key>0)
+                    <div>
+                        <select id="alat" class="form-select my-2" wire:model="alat.{{$key}}">
+                            <option disabled selected value="">Alat</option>
+                            @foreach(\App\Models\Alat::all() as $us)
+                                <option value="{{$us->id}}">{{$us->kode_alat}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @foreach(\App\Models\Aksi::all() as $aksi)
+                        <div class="form-check">
+                            <input  type="checkbox" value="{{$aksi->id}}" id="flexCheck{{$key}}/{{$aksi->id}}" wire:model="aksi.{{$key}}">
+                            <label  for="flexCheck{{$key}}/{{$aksi->id}}">
+                                {{$aksi->nama}}
+                            </label>
+                        </div>
+                    @endforeach
+                    <div class="form-check form-check-inline">
+                        <input  type="radio" name="inlineRadioOptions{{$key}}" id="inlineRadio1{{$key}}1" value=1 wire:model="kondisi.{{$key}}">
+                        <label for="inlineRadio{{$key}}1">ok</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="inlineRadioOptions{{$key}}" id="inlineRadio{{$key}}2" value=0 wire:model="kondisi.{{$key}}">
+                        <label for="inlineRadio{{$key}}2">not ok</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="validationTextarea" class="form-label">Abnormalitas</label>
+                        <textarea class="form-control" id="validationTextarea" placeholder="Masukan teks" required wire:model="abnormalitas.{{$key}}" ></textarea>
+                    </div>
+                @endif
+            @endforeach
+            <br>
+            <div class="form-check">
+                <button wire:click.prevent="removeAlat">
+                    Hapus </button>
+                <button wire:click.prevent="addAlat" class="">Tambah Alat</button>
+            </div>
+        </div>
 
-        <div class="form-check form-check-inline">
-            <input  type="radio" name="inlineRadioOptions" id="inlineRadio1" value=1 wire:model="kondisi">
-            <label for="inlineRadio1">ok</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value=0 wire:model="kondisi">
-            <label for="inlineRadio2">not ok</label>
-        </div>
-        <div class="mb-3">
-            <label for="validationTextarea" class="form-label">Abnormalitas</label>
-            <textarea class="form-control" id="validationTextarea" placeholder="Masukan teks" wire:model="abnormalitas" ></textarea>
-        </div>
         <div class="form-check">
             <!-- Tombol untuk menambahkan kotak isian PIC baru -->
             <button class="btn btn-primary" type="submit">Submit</button>

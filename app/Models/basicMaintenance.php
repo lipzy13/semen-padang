@@ -13,10 +13,10 @@ class basicMaintenance extends Model
         'area_id',
         'route_id',
         'tanggal',
-        'alat_id',
-        'abnormalitas',
         'aksilist_id',
+        'alat',
         'kondisi',
+        'abnormalitas'
     ];
 
     protected $casts = [
@@ -27,11 +27,16 @@ class basicMaintenance extends Model
         return $this->belongsTo(Area::class);
     }
 
-    public function alat () : BelongsTo {
-        return $this->belongsTo(Alat::class);
-    }
     public function route() : BelongsTo {
         return $this->belongsTo(Route::class);
+    }
+
+    public function kodeAlat() : BelongsTo {
+        return $this->belongsTo(Alat::class);
+    }
+
+    public function listAlat(): HasMany {
+        return $this->hasMany(listAlat::class);
     }
 
     public function aksiList() : HasMany {

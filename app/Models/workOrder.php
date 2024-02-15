@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class workOrder extends Model
 {
     protected $fillable = [
-        'tanggal',
+        'tanggal_mulai',
+        'tanggal_selesai',
         'alat_id',
         'abnormalitas',
         'action',

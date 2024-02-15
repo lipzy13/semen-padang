@@ -56,9 +56,6 @@
                         Dashboard
                     </a>
 
-                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-
-                    </div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                         Periksa
@@ -67,7 +64,7 @@
                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                             <a class="nav-link collapsed" href="{{route('basicMaintenance')}}">
-                                Basic Mantance
+                                Basic Maintenance
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
 
@@ -85,8 +82,33 @@
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-phone"></i></div>
                         Pusat Bantuan
                     </a>
+
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePagess" aria-expanded="false" aria-controls="collapsePagess">
+                        <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                        Admin
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapsePagess" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                            <a class="nav-link collapsed" href="{{route('tambah-area')}}">
+                                Tambah Area
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+
+                            <a class="nav-link collapsed" href="/tambah-route">
+                                Tambah Route
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+
+                            <a class="nav-link collapsed" href="/tambah-alat">
+                                Tambah Alat
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                        </nav>
+                    </div>
                 </div>
             </div>
+
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as: {{auth()->user()->username}}</div>
 

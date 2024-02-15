@@ -17,7 +17,9 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>TANGGAL</th>
+                    <th>TANGGAL MULAI</th>
+                    <th>TANGGAL SELESAI</th>
+                    <th>PIC</th>
                     <th>ALAT</th>
                     <th>ABNORMALITAS</th>
                     <th>ACTION</th>
@@ -27,7 +29,15 @@
                 <tbody>
                 @foreach(\App\Models\workOrder::all() as $worko)
                     <tr>
-                        <td>{{$worko->tanggal->format('d/m/Y')}}</td>
+                        <td>{{$worko->tanggal_mulai}}</td>
+                        <td>{{$worko->tanggal_selesai}}</td>
+                        <td>
+                            <ul>
+                                @foreach(\App\Models\pic_workorder::where('work_order_id', $worko->id)->get() as $pic)
+                                    <li>{{$pic->nama}}</li>
+                                @endforeach
+                            </ul>
+                        </td>
                         <td>{{$worko->alat->kode_alat}}</td>
                         <td>{{$worko->abnormalitas}}</td>
                         <td>{{$worko->action}}</td>
@@ -36,6 +46,7 @@
                 @endforeach
                 </tbody>
             </table>
+            <a href="/work-order/delete" class="btn-danger btn my-2">Hapus</a>
             <a href="/work-order/download" class="btn-success btn my-2">Download</a>
         </div>
 
@@ -75,8 +86,12 @@
                             </ul>
                         </td>
                         <td>{{$data->tanggal->format('d/m/Y')}}</td>
-                        <td>{{$data->alat->kode_alat}}</td>
-                        <?php $aksi_list = \App\Models\AksiList::pluck('aksi_id')->all() ?>
+                        <td>
+                            <ul>
+                                    <li>{{\App\Models\Alat::where('id', $data->alat)->value('kode_alat') }}</li>
+                            </ul>
+                        </td>
+                        <?php $aksi_list = \App\Models\AksiList::where('basic_maintenance_id', $data->id)->pluck('aksi_id')->all() ?>
                         @foreach(\App\Models\Aksi::all() as $aksi)
                             @if(in_array($aksi->id, $aksi_list))
                                 <td align="center" style="font-family: wingdings; font-size:150%;font-weight:bold; font-color:green">&#10004;</td>
@@ -85,12 +100,15 @@
                             @endif
 
                         @endforeach
-                        <td>{{$data->kondisi ? 'ok' : 'not ok'}}</td>
+                        <td>
+                                    {{$data->kondisi ? 'ok' : 'not ok'}}
+                        </td>
                     </tr>
                 @endforeach
                 <!-- Tambahkan baris sesuai kebutuhan -->
                 </tbody>
             </table>
+            <a href="/basic-maintenance/delete" class="btn-danger btn my-2">Hapus</a>
             <a href="/basic-maintenance/download" class="btn-success btn my-2">Download</a>
         </div>
 

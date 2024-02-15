@@ -12,9 +12,9 @@ return new class extends Migration {
             $table->foreignId('area_id')->constrained();
             $table->foreignId('route_id')->constrained();
             $table->date('tanggal');
-            $table->foreignId('alat_id')->constrained();
-            $table->string('abnormalitas');
+            $table->string('alat');
             $table->boolean('kondisi');
+            $table->string('abnormalitas');
             $table->timestamps();
         });
     }
